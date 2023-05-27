@@ -36,8 +36,24 @@ function setLanguage(lang) {
     const elements = document.querySelectorAll('[data-lang]')
 
     elements.forEach(ele => {
-        ele.textContent = translation[lang][ele.getAttribute('data-lang')]
+        ele.childNodes[0].nodeValue = translation[lang][ele.getAttribute('data-lang')]
+
+        if (lang == 'ar') {
+            ele.classList.add('ar-font-style')
+        } else {
+            ele.classList.remove('ar-font-style')
+        }
     })
 
     // document.dir = (lang == 'ar') ? 'rtl' : 'ltr';
+    // const headerItems = document.querySelectorAll('.header.shop .nav li a');
+    // if (lang == 'ar') {
+    //     headerItems.forEach(item => {
+    //         item.classList.add('ar-font-style')
+    //     })
+    // } else {
+    //     headerItems.forEach(item => {
+    //         item.classList.remove('ar-font-style')
+    //     })
+    // }
 }
