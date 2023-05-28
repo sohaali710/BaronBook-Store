@@ -1,0 +1,132 @@
+:root {
+    --dark-green: #639251;
+    --light-green: rgb(113, 165, 93)1;
+    --dark-red: #9A1A18;
+    --light-red: #BE1937;
+    --dark-cyan: #1CB3CB;
+    --light-cyan: #36C7DE;
+    --light-gray: #F7F7F6;
+}
+
+.custom-form-control {
+    position: relative;
+
+    padding-bottom: 24px;
+}
+
+.custom-form-control.success input,
+.custom-form-control.success select {
+    border: 2px solid var(--dark-green) !important;
+}
+
+.custom-form-control.error input,
+.custom-form-control.error select {
+    border: 2px solid var(--dark-red) !important;
+}
+
+
+.custom-form-control i {
+    font-size: 24px;
+
+    visibility: hidden;
+
+    position: absolute;
+    top: 45px;
+    left: 10px;
+}
+
+.custom-form-control.success i.fa-check-circle {
+    visibility: visible;
+    color: var(--dark-green);
+}
+
+.custom-form-control.error i.fa-exclamation-circle {
+    visibility: visible;
+    color: var(--dark-red);
+}
+
+
+.custom-form-control small {
+    visibility: hidden;
+
+    position: relative;
+    bottom: -5px;
+    /* right: 0; */
+
+    font-size: 16px;
+    font-weight: 600;
+
+    float: right;
+}
+
+/* #add-category-form .custom-form-control small,
+#update-category-form .custom-form-control small {
+    bottom: 0;
+} */
+
+#login-form .formErrorMsg,
+#signup-form .formErrorMsg {
+    visibility: hidden;
+
+    position: relative;
+    top: -28px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    float: right;
+}
+
+.custom-form-control.error small,
+#login-form.error .formErrorMsg,
+#signup-form.error .formErrorMsg {
+    visibility: visible;
+    color: var(--light-red);
+}
+
+/* add new product form */
+/* #add-product-form .custom-form-control small {
+    bottom: 0;
+} */
+
+/* choose user type radio buttons */
+/* 
+.chooseUserType .custom-radio {
+    margin-bottom: 10px;
+
+    position: relative;
+    right: 36px;
+}
+
+.chooseUserType label {
+    font-weight: 500;
+
+    position: relative;
+    top: -5px;
+}
+
+.chooseUserType input[type='radio'] {
+    display: none;
+}
+
+.chooseUserType label::before {
+    position: absolute;
+    right: -36px;
+    top: 4px;
+    content: '';
+
+    width: 22px;
+    height: 22px;
+
+    border: 4px solid var(--dark-green);
+    border-radius: 50%;
+}
+
+
+.chooseUserType input[type='radio']:checked+label::before {
+    width: 22px;
+    height: 22px;
+
+    background: url(../../img/icons/circle-dot-solid.svg);
+}
+ */
