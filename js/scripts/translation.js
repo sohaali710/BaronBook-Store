@@ -5,7 +5,17 @@ const translation = {
         authors: 'Authors',
         contactUs: 'Contact Us',
 
-        signupBtn: 'Sing up'
+        signupBtn: 'Sing up',
+        name: 'Name',
+        email: 'Email',
+        password: 'Password',
+        confirmPassword: 'Confirm Password',
+        gender: 'Gender',
+        chooseGender: 'Choose Gender',
+        male: 'Male',
+        female: 'Female',
+        birthdate: 'Birth Date',
+
     },
     ar: {
         home: 'الرئيسية',
@@ -13,7 +23,17 @@ const translation = {
         authors: 'المؤلفون',
         contactUs: 'تواصل معنا',
 
-        signupBtn: 'إنشاء حساب'
+        signupBtn: 'إنشاء حساب',
+        name: 'الاسم',
+        email: 'الإيميل',
+        password: 'كلمة المرور',
+        confirmPassword: 'أعد ادخال كلمة المرور',
+        gender: 'النوع',
+        chooseGender: 'اختر النوع',
+        male: 'ذكر',
+        female: 'أنثى',
+        birthdate: 'تاريخ الميلاد',
+
     }
 }
 

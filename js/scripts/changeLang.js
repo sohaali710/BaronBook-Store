@@ -38,22 +38,30 @@ function setLanguage(lang) {
     elements.forEach(ele => {
         ele.childNodes[0].nodeValue = translation[lang][ele.getAttribute('data-lang')]
 
+        // change lang in gender select O_O
+        if (ele.parentElement.matches('#gender')) {
+            const niceSelectDiv = document.getElementsByName('gender')[0].nextSibling
+            const genderOptions = niceSelectDiv.querySelector('.list').children
+            const selectedOption = niceSelectDiv.querySelector('.current')
+
+            if (ele.getAttribute('data-lang') == 'male') {
+                selectedOption.textContent = translation[lang][ele.getAttribute('data-lang')]
+                selectedOption.classList.add('ar-font-style')
+            }
+
+            for (let i = 0; i < genderOptions.length; i++) {
+                // console.log(ele.value == genderOptions[i].getAttribute('data-value'))
+                if (ele.value == genderOptions[i].getAttribute('data-value')) {
+                    genderOptions[i].textContent = translation[lang][ele.getAttribute('data-lang')]
+                    genderOptions[i].classList.add('ar-font-style')
+                }
+            }
+        }
         if (lang == 'ar') {
             ele.classList.add('ar-font-style')
         } else {
             ele.classList.remove('ar-font-style')
         }
-    })
 
-    // document.dir = (lang == 'ar') ? 'rtl' : 'ltr';
-    // const headerItems = document.querySelectorAll('.header.shop .nav li a');
-    // if (lang == 'ar') {
-    //     headerItems.forEach(item => {
-    //         item.classList.add('ar-font-style')
-    //     })
-    // } else {
-    //     headerItems.forEach(item => {
-    //         item.classList.remove('ar-font-style')
-    //     })
-    // }
+    })
 }
