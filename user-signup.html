@@ -25,6 +25,7 @@
 	<link rel="stylesheet" href="css/magnific-popup.min.css">
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="css/font-awesome.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<!-- Fancybox -->
 	<link rel="stylesheet" href="css/jquery.fancybox.min.css">
 	<!-- Themify Icons -->
@@ -45,7 +46,8 @@
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="css/responsive.css">
 
-
+	<!-- Styles -->
+	<link rel="stylesheet" href="css/styles/form-validation.css">
 
 </head>
 
@@ -83,7 +85,7 @@
 						<div class="right-content">
 							<ul class="list-main">
 								<li><i class="ti-user"></i> <a href="#">My account</a></li>
-								<li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
+								<li><i class="ti-power-off"></i><a href="user-login.html">Login</a></li>
 							</ul>
 						</div>
 						<!-- End Top Right -->
@@ -211,38 +213,95 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<div class="checkout-form">
-						<h2 class="text-center mb-3">إنشاء حساب جديد</h2>
-						<h6>لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a>
-						</h6>
+					<div class="signup-login-form" dir="rtl">
+						<h2 class="form-title">إنشاء حساب جديد</h2>
+						<p class="signup-login-link">لديك حساب بالفعل؟ <a href="user-login.html">تسجيل الدخول</a>
+						</p>
 						<!-- Form -->
-						<form class="form" method="post">
+						<form class="form" method="post" id="signup-form">
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-12">
 									<div class="form-group">
-										<label>First Name<span>*</span></label>
-										<input type="text" name="name" placeholder="" required="required">
+										<div class="custom-form-control">
+											<label data-lang="name">الاسم<span>*</span></label>
+											<input type="text" name="name" id="name" placeholder="">
+											<i class="fas fa-check-circle"></i>
+											<i class="fas fa-exclamation-circle"></i>
+											<small></small>
+										</div>
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-12">
 									<div class="form-group">
-										<label>Last Name<span>*</span></label>
-										<input type="text" name="name" placeholder="" required="required">
+										<div class="custom-form-control">
+											<label data-lang="email">الإيميل<span>*</span></label>
+											<input type="email" name="email" id="email" placeholder="">
+											<i class="fas fa-check-circle"></i>
+											<i class="fas fa-exclamation-circle"></i>
+											<small></small>
+										</div>
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-12">
 									<div class="form-group">
-										<label>Email Address<span>*</span></label>
-										<input type="email" name="email" placeholder="" required="required">
+										<div class="custom-form-control">
+											<label data-lang="password">كلمة المرور<span>*</span></label>
+											<input type="password" name="password" id="password" placeholder="">
+											<i class="fas fa-check-circle"></i>
+											<i class="fas fa-exclamation-circle"></i>
+											<small></small>
+										</div>
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-12">
 									<div class="form-group">
-										<label>Password<span>*</span></label>
-										<input type="password" name="password" placeholder="" required="required">
+										<div class="custom-form-control">
+											<label data-lang="confirmPassword">أعد ادخال كلمة
+												المرور<span>*</span></label>
+											<input type="password" name="confirm-password" id="confirm-password"
+												placeholder="">
+											<i class="fas fa-check-circle"></i>
+											<i class="fas fa-exclamation-circle"></i>
+											<small></small>
+										</div>
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-12">
+									<div class="form-group">
+										<div class="custom-form-control">
+											<label data-lang="gender">النوع<span>*</span></label>
+											<select name="gender" id="gender">
+												<!-- <option selected data-lang="chooseGender">اختر النوع</option> -->
+												<option value="male" data-lang="male">ذكر</option>
+												<option value="female" data-lang="female">أنثى</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-12">
+									<div class="form-group">
+										<div class="custom-form-control">
+											<label data-lang="birthdate">تاريخ الميلاد<span>*</span></label>
+											<input type="date" name="birthdate" id="birthdate" class="text-center"
+												placeholder="">
+											<i class="fas fa-check-circle"></i>
+											<i class="fas fa-exclamation-circle"></i>
+											<small></small>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-12 position-relative">
+									<small class="formErrorMsg"></small>
+								</div>
+
+								<div class="col-12 position-relative">
+									<button type="submit" class="btn btn-dark lang-btn" data-lang="signupBtn">إنشاء
+										حساب</button>
+								</div>
+							</div>
+
+							<!-- <div class="col-lg-6 col-md-6 col-12">
 									<div class="form-group">
 										<label>Country<span>*</span></label>
 										<select name="country_name" id="country">
@@ -493,19 +552,8 @@
 											<option value="ZW">Zimbabwe</option>
 										</select>
 									</div>
-								</div>
-								<div class="col-lg-6 col-md-6 col-12">
-									<div class="form-group">
-										<label>Phone Number<span>*</span></label>
-										<input type="number" name="number" placeholder="" required="required">
-									</div>
-								</div>
+								</div> -->
 
-								<div class="col-12">
-									<button type="submit" class="btn btn-dark lang-btn" data-lang="signupBtn">إنشاء
-										حساب</button>
-								</div>
-							</div>
 						</form>
 						<!--/ End Form -->
 					</div>
@@ -515,73 +563,6 @@
 	</section>
 	<!--/ End Checkout -->
 
-	<!-- Start Shop Services Area  -->
-	<section class="shop-services section home">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-rocket"></i>
-						<h4>Free shiping</h4>
-						<p>Orders over $100</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-reload"></i>
-						<h4>Free Return</h4>
-						<p>Within 30 days returns</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-lock"></i>
-						<h4>Sucure Payment</h4>
-						<p>100% secure payment</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-tag"></i>
-						<h4>Best Peice</h4>
-						<p>Guaranteed price</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Shop Services -->
-
-	<!-- Start Shop Newsletter  -->
-	<section class="shop-newsletter section">
-		<div class="container">
-			<div class="inner-top">
-				<div class="row">
-					<div class="col-lg-8 offset-lg-2 col-12">
-						<!-- Start Newsletter Inner -->
-						<div class="inner">
-							<h4>Newsletter</h4>
-							<p> Subscribe to our newsletter and get <span>10%</span> off your first purchase</p>
-							<form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
-								<input name="EMAIL" placeholder="Your email address" required="" type="email">
-								<button class="btn">Subscribe</button>
-							</form>
-						</div>
-						<!-- End Newsletter Inner -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Shop Newsletter -->
 
 	<!-- Start Footer Area -->
 	<footer class="footer">
@@ -688,8 +669,6 @@
 	<script src="js/popper.min.js"></script>
 	<!-- Bootstrap JS -->
 	<script src="js/bootstrap.min.js"></script>
-	<!-- Color JS -->
-	<script src="js/colors.js"></script>
 	<!-- Slicknav JS -->
 	<script src="js/slicknav.min.js"></script>
 	<!-- Owl Carousel JS -->
@@ -717,7 +696,15 @@
 	<!-- Active JS -->
 	<script src="js/active.js"></script>
 	<!-- Custom JS -->
+	<script src="js/scripts/user-signup.js" type="module"></script>
 	<script src="js/scripts/changeLang.js" type="module"></script>
+
+	<!-- <script>
+		const defaultSelectedOption = document.getElementById('gender').nextSibling.querySelector('.current')
+		console.log(defaultSelectedOption)
+		defaultSelectedOption.remove()
+	</script> -->
+
 </body>
 
 </html>
