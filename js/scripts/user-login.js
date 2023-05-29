@@ -7,10 +7,11 @@ let emailInput = document.getElementById('email')
 let passwordInput = document.getElementById('password')
 
 let data = {};
-let cookieName = 'user_access_token'
+const userToken = 'user_access_token'
+const adminToken = 'admin_access_token'
 let redirectTo = 'index.html'
 
-if (getCookie(cookieName)) {
+if (getCookie(userToken)) {
     location.href = 'index.html'
 } else {
     formElement.addEventListener('submit', event => {
@@ -43,10 +44,10 @@ if (getCookie(cookieName)) {
                 .then(data => {
                     if (data) {
                         console.log(data)
-                        if (getCookie('admin_access_token')) {
-                            deleteCookie('admin_access_token', data.token)
+                        if (getCookie(adminToken)) {
+                            deleteCookie(adminToken, data.token)
                         }
-                        setCookie(cookieName, data.token)
+                        setCookie(userToken, data.token)
                         location.href = redirectTo;
                     }
                 })

@@ -5736,7 +5736,8 @@ Version:1.0
 	display: none;
 }
 
-.header.shop .list-main .logged-out li i {
+.header.shop .list-main #signup i,
+.header.shop .list-main #login i {
 	position: relative;
 	top: -2px;
 }
