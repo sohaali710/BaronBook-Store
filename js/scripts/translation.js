@@ -1,11 +1,17 @@
 const translation = {
     fr: {
+        myAccount: 'My account',
+        signup: 'Signup',
+        login: 'Login',
+        logout: 'Logout',
+
         home: 'Home',
         categories: 'Categories',
         authors: 'Authors',
         contactUs: 'Contact Us',
 
         signupBtn: 'Sing up',
+        loginBtn: 'Log in',
         name: 'Name',
         email: 'Email',
         password: 'Password',
@@ -18,12 +24,18 @@ const translation = {
 
     },
     ar: {
+        myAccount: 'حسابي',
+        signup: 'إنشاء حساب',
+        login: 'تسجيل دخول',
+        logout: 'تسجيل خروج',
+
         home: 'الرئيسية',
         categories: 'الأقسام',
         authors: 'المؤلفون',
         contactUs: 'تواصل معنا',
 
         signupBtn: 'إنشاء حساب',
+        loginBtn: 'تسجيل دخول',
         name: 'الاسم',
         email: 'الإيميل',
         password: 'كلمة المرور',

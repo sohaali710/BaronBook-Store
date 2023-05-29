@@ -83,8 +83,20 @@
 						<!-- Top Right -->
 						<div class="right-content">
 							<ul class="list-main">
-								<li><i class="ti-user"></i> <a href="#">My account</a></li>
-								<li><i class="ti-power-off"></i><a href="user-login.html#">Login</a></li>
+								<div id="logged-in">
+									<li><i class="ti-user"></i> <a href="#"
+											data-lang="myAccount">حسابي</a>
+									</li>
+									<li><i class="ti-power-off"></i><a href="user-login.html"
+											data-lang="logout">تسجيل خروج</a></li>
+								</div>
+								<div id="logged-out">
+									<li><i class="fa-solid fa-user"></i><a href="user-signup.html#"
+											data-lang="signup">إنشاء
+											حساب</a></li>
+									<li><i class="fa-solid fa-arrow-right-to-bracket"></i><a
+											href="user-login.html#" data-lang="login">تسجيل دخول</a></li>
+								</div>
 							</ul>
 						</div>
 						<!-- End Top Right -->
@@ -237,7 +249,7 @@
 									<div class="navbar-collapse">
 										<div class="nav-inner">
 											<ul class="nav main-menu menu navbar-nav">
-												<li class="active"><a href="#" data-lang="home">Home</a></li>
+												<li class="active"><a href="index.html" data-lang="home">Home</a></li>
 												<li><a href="#" data-lang="categories">Categories<i
 															class="ti-angle-down mx-2"></i></a>
 													<ul class="dropdown">
@@ -3317,6 +3329,7 @@
 	<!-- Active JS -->
 	<script src="js/active.js"></script>
 	<!-- Custom JS -->
+	<script src="js/scripts/logout.js" type="module"></script>
 	<script src="js/scripts/changeLang.js" type="module"></script>
 </body>
 

@@ -5732,6 +5732,15 @@ Version:1.0
 	flex-grow: 0;
 }
 
+.header .right-content #logged-in {
+	display: none;
+}
+
+.header.shop .list-main .logged-out li i {
+	position: relative;
+	top: -2px;
+}
+
 /* Trending items section */
 .product-area.trending .nav-tabs li a.active,
 .product-area.trending .nav-tabs li:hover a {
