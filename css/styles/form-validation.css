@@ -14,8 +14,9 @@ form:not(#add-main-category-form):not(#add-subcategory-form) .custom-form-contro
     padding-bottom: 24px;
 }
 
-#add-main-category-form .custom-form-control {
-    padding-bottom: 5px;
+#add-main-category-form .custom-form-control,
+#add-subcategory-form .custom-form-control {
+    padding-bottom: 10px;
 }
 
 .custom-form-control.success input,
@@ -68,12 +69,13 @@ form:not(#add-main-category-form):not(#add-subcategory-form) .custom-form-contro
     bottom: 0;
 } */
 
-#login-form .formErrorMsg,
-#signup-form .formErrorMsg {
+form .formErrorMsg,
+form .formErrorMsg {
     visibility: hidden;
 
     position: relative;
     top: -28px;
+    right: 10px;
 
     font-size: 16px;
     font-weight: 600;
@@ -82,8 +84,8 @@ form:not(#add-main-category-form):not(#add-subcategory-form) .custom-form-contro
 }
 
 .custom-form-control.error small,
-#login-form.error .formErrorMsg,
-#signup-form.error .formErrorMsg {
+form.error .formErrorMsg,
+form.error .formErrorMsg {
     visibility: visible;
     color: var(--light-red);
 }

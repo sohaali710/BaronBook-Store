@@ -130,6 +130,16 @@
       <!-- Main content -->
       <section class="content">
         <div class="row">
+          <div class="col-md-6 categ-added">
+
+          </div>
+
+          <div class="col-md-6 subcateg-added">
+
+          </div>
+        </div>
+
+        <div class="row">
           <!-- left column -->
           <div class="col-md-6">
             <!-- general form elements -->
@@ -138,30 +148,31 @@
                 <h3 class="box-title">Add Main Category</h3>
               </div><!-- /.box-header -->
               <!-- form start -->
-              <form method="POST" role="form" id="add-main-category-form">
+              <form method="POST" role="form" id="add-main-category-form" enctype="multipart/form-data">
                 <div class="box-body">
                   <!-- text input -->
                   <div class="form-group">
                     <div class="custom-form-control">
                       <label>Category Name</label>
-                      <input type="text" name="name" id="name" class="form-control" placeholder="Enter ..." />
+                      <input type="text" name="name" id="categ-name" class="form-control" placeholder="Enter ..." />
                       <small></small>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <div class="custom-form-control">
-                      <label for="exampleInputFile">Add Category Image</label>
-                      <input type="file" name="img" class="form-control" id="exampleInputFile">
+                      <label for="categ-img">Add Category Image</label>
+                      <input type="file" name="img" id="categ-img" class="form-control">
                       <small></small>
                     </div>
                   </div>
 
                   <!-- <div class="categ-img">
-                    
-                  </div> -->
-
+          
+        </div> -->
                 </div><!-- /.box-body -->
+
+                <small class="formErrorMsg"></small>
 
                 <div class="box-footer">
                   <button type="submit" class="btn btn-primary">Add</button>
@@ -189,12 +200,15 @@
                   </div>
                 </div><!-- /.box-body -->
 
+                <small class="formErrorMsg"></small>
+
                 <div class="box-footer">
                   <button type="submit" class="btn btn-warning">Add</button>
                 </div>
               </form>
             </div><!-- /.box -->
           </div><!--/.col (right) -->
+
         </div> <!-- /.row -->
       </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
