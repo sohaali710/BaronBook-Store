@@ -1,0 +1,58 @@
+.logo {
+    height: 100%;
+}
+
+.logo img {
+    width: 100px;
+
+    position: relative;
+    top: -10px;
+}
+
+.skin-green .main-header .logo {
+    background-color: var(--custom-black) !important;
+}
+
+.skin-green .main-header .navbar {
+    background-color: var(--custom-black) !important;
+}
+
+.skin-green .main-header .navbar .sidebar-toggle:hover {
+    background-color: var(--dark-green);
+}
+
+
+.nav>li>a {
+    display: inline-block;
+}
+
+.user i {
+    font-size: 16px;
+    color: var(--light-gray) !important;
+
+    position: relative;
+    top: 2px;
+    right: 5px;
+}
+
+
+/* sidebar */
+.sidebar .header {
+    margin-bottom: 20px;
+}
+
+.sidebar-menu .treeview {
+    font-size: 18px;
+}
+
+
+:root {
+    --dark-green: #639251;
+    --light-green: rgb(113, 165, 93);
+    --dark-red: #9A1A18;
+    --light-red: #BE1937;
+    --dark-cyan: #1CB3CB;
+    --light-cyan: #36C7DE;
+    --light-gray: #F7F7F6;
+    --custom-black: #222d32;
+}
