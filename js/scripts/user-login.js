@@ -38,7 +38,7 @@ if (getCookie(userToken)) {
                         deleteFormError(formElement)
                         return res.json();
                     } else {
-                        setFormError(formElement, emailInput, passwordInput, 'هذا البريد الإلكتروني أو كلمة المرور غير صحيحة. من فضلك ادخل بريد إلكتروني و كلمة مرور صحيحتين أو قم بإنشاء حساب جديد.')
+                        setFormError(formElement, 'هذا البريد الإلكتروني أو كلمة المرور غير صحيحة. من فضلك ادخل بريد إلكتروني و كلمة مرور صحيحتين أو قم بإنشاء حساب جديد.', emailInput, passwordInput)
                     }
                 })
                 .then(data => {

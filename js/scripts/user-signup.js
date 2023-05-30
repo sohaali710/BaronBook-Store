@@ -47,7 +47,7 @@ if (getCookie(cookieName)) {
                         deleteFormError(formElement)
                         return res.json()
                     } else {
-                        setFormError(formElement, emailInput, passwordInput, 'هذا البريد الإلكتروني مستخدم مسبقًا. من فضلك قم بتسجيل الدخول.')
+                        setFormError(formElement, 'هذا البريد الإلكتروني مستخدم مسبقًا. من فضلك قم بتسجيل الدخول.', emailInput, passwordInput)
                     }
                 })
                 .then(data => {

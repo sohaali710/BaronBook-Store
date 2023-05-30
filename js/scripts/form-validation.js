@@ -90,24 +90,38 @@ let setErrorFor = (input, msg) => {
 }
 
 
-let setFormError = (formElement, emailInput, passwordInput, msg) => {
-    if (emailInput.parentElement.classList.contains('success') && passwordInput.parentElement.classList.contains('success')) {
-        const formErrorMsg = formElement.querySelector('.formErrorMsg')
-        formErrorMsg.innerText = msg
+function setFormError(formElement, msg, input1, input2) {
+    console.log(arguments.length)
+    if (arguments.length == 4) {
+        if (input1.parentElement.classList.contains('success') && input2.parentElement.classList.contains('success')) {
+            const formErrorMsg = formElement.querySelector('.formErrorMsg')
+            formErrorMsg.innerText = msg
 
-        formElement.classList.add('error')
+            formElement.classList.add('error')
 
-        emailInput.parentElement.className = "custom-form-control error"
-        passwordInput.parentElement.className = "custom-form-control error"
-        emailInput.parentElement.querySelector('small').innerHTML = ''
-        passwordInput.parentElement.querySelector('small').innerHTML = ''
+            input1.parentElement.className = "custom-form-control error"
+            input1.parentElement.querySelector('small').innerHTML = ''
+            input2.parentElement.className = "custom-form-control error"
+            input2.parentElement.querySelector('small').innerHTML = ''
 
+        }
+    } else if (arguments.length == 3) {
+        if (input1.parentElement.classList.contains('success')) {
+            const formErrorMsg = formElement.querySelector('.formErrorMsg')
+            formErrorMsg.innerText = msg
+
+            formElement.classList.add('error')
+
+            input1.parentElement.className = "custom-form-control error"
+            input1.parentElement.querySelector('small').innerHTML = ''
+        }
     }
 }
 
 let deleteFormError = (formElement) => {
     formElement.querySelector('.formErrorMsg').innerHTML = ''
 }
+
 
 let deleteFormInputsError = (formElement) => {
     formElement.querySelectorAll('input').forEach((input) => {
