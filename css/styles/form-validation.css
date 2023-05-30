@@ -1,17 +1,21 @@
 :root {
     --dark-green: #639251;
     --light-green: rgb(113, 165, 93)1;
-    --dark-red: #9A1A18;
-    --light-red: #BE1937;
+    --dark-red: #BE1937;
+    --light-red: #d3405b;
     --dark-cyan: #1CB3CB;
     --light-cyan: #36C7DE;
     --light-gray: #F7F7F6;
 }
 
-.custom-form-control {
+form:not(#add-main-category-form):not(#add-subcategory-form) .custom-form-control {
     position: relative;
 
     padding-bottom: 24px;
+}
+
+#add-main-category-form .custom-form-control {
+    padding-bottom: 5px;
 }
 
 .custom-form-control.success input,
@@ -21,7 +25,7 @@
 
 .custom-form-control.error input,
 .custom-form-control.error select {
-    border: 2px solid var(--dark-red) !important;
+    border: 2px solid var(--light-red) !important;
 }
 
 
@@ -42,7 +46,7 @@
 
 .custom-form-control.error i.fa-exclamation-circle {
     visibility: visible;
-    color: var(--dark-red);
+    color: var(--light-red);
 }
 
 
