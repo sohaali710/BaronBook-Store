@@ -1,5 +1,6 @@
 import { getCookie } from '../../js/scripts/cookies.js'
-import { checkCategName, checkCategImg, setFormError, deleteFormError } from '../../js/scripts/form-validation.js'
+import { checkCategName, checkCategImg, setFormError, deleteFormError, checkSelectCateg } from '../../js/scripts/form-validation.js'
+import { getMainCategories } from './get-main-categories.js'
 
 const adminToken = 'admin_access_token'
 
@@ -15,16 +16,23 @@ let categAlert = document.querySelector('.categ-added')
 // redirect to login
 !getCookie(adminToken) ? location.href = 'admin-login.html' : null;
 
+// #region all main categories
+const mainCategoriesContainer = document.querySelector('.main-categories')
+
+document.addEventListener('DOMContentLoaded', () => getMainCategories(mainCategoriesContainer))
+// #endregion all main categories
+
+
 // #region add main category
 addCategForm.addEventListener('submit', event => {
     event.preventDefault();
 
-    let checkCategNameReturn = checkCategName(categoryNameInput)
-    let checkCategImgReturn = checkCategImg(categImgInput)
+    const checkCategNameReturn = checkCategName(categoryNameInput)
+    const checkCategImgReturn = checkCategImg(categImgInput)
 
 
-    let formData = new FormData(addCategForm);
-    let data = Object.fromEntries(formData)
+    const formData = new FormData(addCategForm);
+    const data = Object.fromEntries(formData)
     console.log(data)
 
     const myHeaders = new Headers();
@@ -55,7 +63,7 @@ addCategForm.addEventListener('submit', event => {
                     deleteFormError(addCategForm)
                     categAlert.innerHTML = addedSuccessfullyAlert
 
-                    console.log(res.data.img)
+                    // console.log(res.data.img)
 
                     return res.json();
                 } else {
@@ -74,11 +82,12 @@ let addSubcategForm = document.getElementById('add-subcategory-form')
 let subcategoryNameInput = document.querySelector('#subcateg-name')
 let subcategAlert = document.querySelector('.subcateg-added')
 
+
 addSubcategForm.addEventListener('submit', event => {
     event.preventDefault();
 
     let checkCategNameReturn = checkCategName(subcategoryNameInput)
-
+    let checkSelectCategReturn = checkSelectCateg(mainCategoriesContainer.querySelector('select'))
 
     let formData = new FormData(addSubcategForm);
     let data = Object.fromEntries(formData)
@@ -104,7 +113,7 @@ addSubcategForm.addEventListener('submit', event => {
     </div>`
 
 
-    if (checkCategNameReturn) {
+    if (checkCategNameReturn && checkSelectCategReturn) {
         fetch('http://localhost:5000/admin/add-sub-categ', options)
             .then(res => {
                 console.log(res);
@@ -115,7 +124,7 @@ addSubcategForm.addEventListener('submit', event => {
 
                     return res.json();
                 } else {
-                    setFormError(addSubcategForm, 'هذا القسم موجود بالفعل.', subcategoryNameInput)
+                    setFormError(addSubcategForm, 'هذا القسم الفرعي موجود مسبقًا في القسم الأساسي الذي اخترته.', subcategoryNameInput)
                 }
             })
             .then(data => console.log(data))

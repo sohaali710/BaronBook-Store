@@ -74,6 +74,17 @@ let checkBirthdate = (birthdateInput) => {
     return flag
 }
 
+let checkSelectCateg = (selectElement) => {
+    let flag = false
+    if (selectElement.value === '') {
+        setErrorFor(selectElement, 'من فضلك اختر القسم.')
+    } else {
+        setSuccessFor(selectElement)
+        flag = true
+    }
+    return flag
+}
+
 
 let setSuccessFor = (input) => {
     const formControl = input.parentElement
@@ -91,7 +102,6 @@ let setErrorFor = (input, msg) => {
 
 
 function setFormError(formElement, msg, input1, input2) {
-    console.log(arguments.length)
     if (arguments.length == 4) {
         if (input1.parentElement.classList.contains('success') && input2.parentElement.classList.contains('success')) {
             const formErrorMsg = formElement.querySelector('.formErrorMsg')
@@ -214,5 +224,6 @@ export {
     checkUsername, checkEmail, checkPassword, checkConfirmPass, checkGender, checkBirthdate, setFormError, deleteFormError,
     checkName, checkCategory, checkDescription, checkDetails, checkImgs,
     checkCategName, checkCategImg,
+    checkSelectCateg,
     deleteFormInputsError
 }
