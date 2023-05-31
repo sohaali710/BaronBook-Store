@@ -1,8 +1,9 @@
 
 function setCookie(cookieName, cookieVal) {
     var date = new Date();
-    // expired after a month
-    date.setMonth(date.getMonth() + 1);
+
+    // expired after 24hr
+    date.setTime(date.getTime() + (24 * 60 * 60 * 1000))
 
     document.cookie = `${cookieName}=${cookieVal}; expires=${date}`;
 }
