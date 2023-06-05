@@ -1,5 +1,6 @@
 import { getCookie } from '../../js/scripts/cookies.js'
-import { checkCategName, checkCategImg, setFormError, deleteFormError, checkSelectCateg } from '../../js/scripts/form-validation.js'
+import { checkCategName, checkCategImg, setFormError, deleteFormError, checkSelectCateg, checkTextInputs, checkCheckBoxInputs } from '../../js/scripts/form-validation.js'
+import { getCategoriesAccordion } from './get-categories-accordion.js'
 import { getMainCategories } from './get-main-categories.js'
 
 const adminToken = 'admin_access_token'
@@ -8,18 +9,18 @@ let addCategForm = document.getElementById('add-main-category-form')
 let categoryNameInput = document.getElementById('categ-name')
 let categImgInput = document.getElementById('categ-img')
 let categAlert = document.querySelector('.categ-added')
-// let categImg = document.querySelector('#add-main-category-form .categ-img')
-
-
-// let filterByCategCol = document.getElementById('category')
 
 // redirect to login
 !getCookie(adminToken) ? location.href = 'admin-login.html' : null;
 
 // #region all main categories
 const mainCategoriesContainer = document.querySelector('.main-categories')
+let categContainer = document.querySelector('#accordion')
 
-document.addEventListener('DOMContentLoaded', () => getMainCategories(mainCategoriesContainer))
+document.addEventListener('DOMContentLoaded', () => {
+    getMainCategories(mainCategoriesContainer)
+    getCategoriesAccordion(categContainer)
+})
 // #endregion all main categories
 
 
@@ -79,26 +80,37 @@ addCategForm.addEventListener('submit', event => {
 
 // #region add subcategory
 let addSubcategForm = document.getElementById('add-subcategory-form')
-let subcategoryNameInput = document.querySelector('#subcateg-name')
+let subcategoryNameInput = document.getElementById('subcateg-name')
+let addSubcategBtn = document.getElementById('addSubcategBtn')
+
 let subcategAlert = document.querySelector('.subcateg-added')
 
-
 addSubcategForm.addEventListener('submit', event => {
-    event.preventDefault();
+    event.preventDefault()
 
     let checkCategNameReturn = checkCategName(subcategoryNameInput)
-    let checkSelectCategReturn = checkSelectCateg(mainCategoriesContainer.querySelector('select'))
+
+    let checkboxInputs = mainCategoriesContainer.querySelectorAll('input[type=checkbox]')
+    let checkTextInputsReturn = checkCheckBoxInputs(checkboxInputs)
 
     let formData = new FormData(addSubcategForm);
     let data = Object.fromEntries(formData)
     console.log(data)
 
-    const myHeaders = new Headers();
+    let { name, ...obj } = data
 
+    let mainIds = []
+    for (let i in obj) {
+        mainIds.push(obj[i])
+    }
+
+    let bodyData = { name, mainIds }
+
+    const myHeaders = new Headers();
     const options = {
         method: 'POST',
         headers: myHeaders,
-        body: JSON.stringify(data)
+        body: JSON.stringify(bodyData)
     }
 
     // delete options.headers['Content-Type'];
@@ -112,13 +124,11 @@ addSubcategForm.addEventListener('submit', event => {
         Subcategory added successfully
     </div>`
 
-
-    if (checkCategNameReturn && checkSelectCategReturn) {
+    if (checkCategNameReturn && checkTextInputsReturn) {
         fetch('http://localhost:5000/admin/add-sub-categ', options)
             .then(res => {
                 console.log(res);
                 if (res.status == 200) {
-                    // getCategories(filterByCategCol)
                     deleteFormError(addSubcategForm)
                     subcategAlert.innerHTML = addedSuccessfullyAlert
 
@@ -132,4 +142,18 @@ addSubcategForm.addEventListener('submit', event => {
     }
 
 })
-    // #endregion add subcategory
+
+// #endregion add subcategory
+
+var expanded = false;
+
+function showCheckboxes() {
+    var checkboxes = document.getElementById("checkboxes");
+    if (!expanded) {
+        checkboxes.style.display = "block";
+        expanded = true;
+    } else {
+        checkboxes.style.display = "none";
+        expanded = false;
+    }
+}
