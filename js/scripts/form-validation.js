@@ -2,17 +2,6 @@
 const emailRegex = /^[a-z0-9]+[.]?[a-z0-9]+@metu\.edu$/;
 const passwordRegex = /^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*|[a-zA-Z0-9]*)$/;
 
-let checkUsername = (nameInput) => {
-    let flag = false
-    if (nameInput.value === '') {
-        setErrorFor(nameInput, 'من فضلك ادخل اسمك  .')
-    } else {
-        setSuccessFor(nameInput)
-        flag = true
-    }
-    return flag
-}
-
 let checkEmail = (emailInput) => {
     let flag = false
     if (emailInput.value === '') {
@@ -52,17 +41,6 @@ let checkConfirmPass = (passwordInput, confirmPassInput) => {
     return flag
 }
 
-let checkGender = (genderInput) => {
-    let flag = false
-    if (genderInput.value === '') {
-        setErrorFor(genderInput, 'من فضلك اختر النوع .')
-    } else {
-        setSuccessFor(genderInput)
-        flag = true
-    }
-    return flag
-}
-
 let checkBirthdate = (birthdateInput) => {
     let flag = false
     if (birthdateInput.value === '') {
@@ -87,15 +65,27 @@ let checkSelectCateg = (selectElement) => {
 
 
 let setSuccessFor = (input) => {
-    const formControl = input.parentElement
+    let formControl = ''
+    if (input.getAttribute('type') == 'checkbox') {
+        formControl = input.parentElement.parentElement.parentElement
+    } else {
+        formControl = input.parentElement
+    }
 
     formControl.className = "custom-form-control success"
 }
-let setErrorFor = (input, msg) => {
-    const formControl = input.parentElement
-    const small = formControl.querySelector('small')
+function setErrorFor(input, msg) {
+    let formControl = ''
+    if (input.getAttribute('type') == 'checkbox') {
+        formControl = input.parentElement.parentElement.parentElement
+    } else {
+        formControl = input.parentElement
+    }
 
-    small.innerText = msg
+    if (arguments.length == 2) {
+        const small = formControl.querySelector('small')
+        small.innerText = msg
+    }
 
     formControl.className = "custom-form-control error"
 }
@@ -125,6 +115,11 @@ function setFormError(formElement, msg, input1, input2) {
             input1.parentElement.className = "custom-form-control error"
             input1.parentElement.querySelector('small').innerHTML = ''
         }
+    } else if (arguments.length == 2) {
+        const formErrorMsg = formElement.querySelector('.formErrorMsg')
+        formErrorMsg.innerText = msg
+
+        formElement.classList.add('error')
     }
 }
 
@@ -145,37 +140,60 @@ let deleteFormInputsError = (formElement) => {
 }
 
 
-/**add & update product form*/
-let checkName = (nameInput) => {
-    let flag = false
-    if (nameInput.value === '') {
-        setErrorFor(nameInput, 'ادخل اسم المنتج .')
-    } else {
-        setSuccessFor(nameInput)
-        flag = true
-    }
-    return flag
+// **************
+function checkTextInputs(textInputsArray) {
+    let textInputsValidation = []
+
+    textInputsArray.forEach(input => {
+        if (input.value === '') {
+            setErrorFor(input)
+            textInputsValidation.push(false)
+        } else {
+            setSuccessFor(input)
+            textInputsValidation.push(true)
+        }
+    })
+
+    return textInputsValidation
 }
-let checkCategory = (categoryInput) => {
-    let flag = false
-    if (categoryInput.value === '') {
-        setErrorFor(categoryInput, 'ادخل القسم الخاص بالمنتج .')
-    } else {
-        setSuccessFor(categoryInput)
-        flag = true
-    }
-    return flag
+function checkCheckBoxInputs(checkBoxInputsArray) {
+    let textInputsValidation = []
+
+    checkBoxInputsArray.forEach(input => {
+        if (!input.checked) {
+            textInputsValidation.push(false)
+        } else {
+            textInputsValidation.push(true)
+        }
+    })
+
+    const notEmpty = textInputsValidation.some(item => item)
+    notEmpty ? setSuccessFor(checkBoxInputsArray[0]) : setErrorFor(checkBoxInputsArray[0], 'اختر القسم الرئيسي.')
+
+    return notEmpty
 }
+
 let checkDescription = (descriptionInput) => {
     let flag = false
     if (descriptionInput.value === '') {
-        setErrorFor(descriptionInput, 'ادخل وصف المنتج .')
+        setErrorFor(descriptionInput, 'ادخل وصف الكتاب .')
     } else {
         setSuccessFor(descriptionInput)
         flag = true
     }
     return flag
 }
+let checkAuthorName = (authorNameInput) => {
+    let flag = false
+    if (authorNameInput.value === '') {
+        setErrorFor(authorNameInput, 'ادخل اسم المؤلف .')
+    } else {
+        setSuccessFor(authorNameInput)
+        flag = true
+    }
+    return flag
+}
+
 let checkDetails = (detailsInput) => {
     let flag = false
     if (detailsInput.value === '') {
@@ -221,9 +239,10 @@ let checkCategImg = (categImgInput) => {
 
 
 export {
-    checkUsername, checkEmail, checkPassword, checkConfirmPass, checkGender, checkBirthdate, setFormError, deleteFormError,
-    checkName, checkCategory, checkDescription, checkDetails, checkImgs,
+    checkEmail, checkPassword, checkConfirmPass, setFormError, deleteFormError,
+    // checkName, checkCategory, checkDescription, checkDetails, checkImgs,
     checkCategName, checkCategImg,
     checkSelectCateg,
-    deleteFormInputsError
+    deleteFormInputsError,
+    checkTextInputs, checkCheckBoxInputs
 }

@@ -1,5 +1,5 @@
 import { getCookie } from './cookies.js'
-import { checkUsername, checkEmail, checkPassword, checkConfirmPass, checkGender, checkBirthdate, setFormError, deleteFormError } from './form-validation.js'
+import { checkTextInputs, checkEmail, checkPassword, checkConfirmPass, setFormError, deleteFormError } from './form-validation.js'
 
 const formElement = document.getElementById('signup-form');
 
@@ -10,21 +10,26 @@ let confirmPassInput = document.getElementById('confirm-password')
 let genderInput = document.getElementById('gender')
 let birthdateInput = document.getElementById('birthdate')
 
-let cookieName = 'user_access_token'
+let userToken = 'user_access_token'
 
 let data = {};
-if (getCookie(cookieName)) {
+if (getCookie(userToken)) {
     location.href = 'index.html'
 } else {
     formElement.addEventListener('submit', event => {
         event.preventDefault();
 
-        let checkNameReturn = checkUsername(nameInput)
-        let checkEmailReturn = checkEmail(emailInput)
-        let checkPassReturn = checkPassword(passwordInput)
-        let checkConfirmPassReturn = checkConfirmPass(passwordInput, confirmPassInput)
-        let checkGenderReturn = checkGender(genderInput)
-        let checkBirthdateReturn = checkBirthdate(birthdateInput)
+        const checkEmailReturn = checkEmail(emailInput)
+        const checkPassReturn = checkPassword(passwordInput)
+        const checkConfirmPassReturn = checkConfirmPass(passwordInput, confirmPassInput)
+
+        const textInputsValidation = checkTextInputs([
+            nameInput,
+            // genderInput,
+            birthdateInput
+        ])
+        const isInputsValid = textInputsValidation.every(inputValid => inputValid)
+
 
         const formData = new FormData(formElement);
         data = Object.fromEntries(formData)
@@ -32,7 +37,7 @@ if (getCookie(cookieName)) {
         delete data['confirm-password']
         console.log(data)
 
-        if (checkNameReturn && checkEmailReturn && checkPassReturn && checkConfirmPassReturn && checkGenderReturn && checkBirthdateReturn) {
+        if (isInputsValid && checkEmailReturn && checkPassReturn && checkConfirmPassReturn) {
 
             fetch(`http://localhost:5000/user/signup`, {
                 method: 'POST',

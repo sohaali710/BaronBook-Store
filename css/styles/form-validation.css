@@ -20,15 +20,20 @@ form:not(#add-main-category-form):not(#add-subcategory-form) .custom-form-contro
 }
 
 .custom-form-control.success input,
-.custom-form-control.success select {
+.custom-form-control.success select,
+.custom-form-control.success .nice-select {
     border: 2px solid var(--dark-green) !important;
 }
 
 .custom-form-control.error input,
-.custom-form-control.error select {
+.custom-form-control.error select,
+.custom-form-control.error .nice-select {
     border: 2px solid var(--light-red) !important;
 }
 
+.shop.checkout #add-book-form .nice-select {
+    margin-bottom: 0 !important;
+}
 
 .custom-form-control i {
     font-size: 24px;
@@ -89,6 +94,11 @@ form.error .formErrorMsg {
     visibility: visible;
     color: var(--light-red);
 }
+
+.custom-form-control.error .checkbox {
+    border: 2px solid var(--light-red);
+}
+
 
 /* add new product form */
 /* #add-product-form .custom-form-control small {
