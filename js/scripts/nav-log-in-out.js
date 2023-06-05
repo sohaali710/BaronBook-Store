@@ -8,9 +8,9 @@ function logInOutNav(cookieName) {
 
     if (getCookie(cookieName)) {
         logOutNav.style.display = 'inline';
-        logInNav.style.display = 'none';
+        logInNav ? logInNav.style.display = 'none' : null;
     } else {
-        logOutNav.style.display = 'none';
+        logOutNav ? logOutNav.style.display = 'none' : null;
         logInNav.style.display = 'inline';
     }
 }

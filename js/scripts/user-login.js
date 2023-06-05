@@ -16,7 +16,6 @@ if (getCookie(userToken)) {
 } else {
     formElement.addEventListener('submit', event => {
         event.preventDefault();
-        console.log("I'm here.")
 
         let checkEmailReturn = checkEmail(emailInput)
         let checkPassReturn = checkPassword(passwordInput)
@@ -43,11 +42,12 @@ if (getCookie(userToken)) {
                 })
                 .then(data => {
                     if (data) {
-                        console.log(data)
+                        // console.log(data)
                         if (getCookie(adminToken)) {
                             deleteCookie(adminToken, data.token)
                         }
                         setCookie(userToken, data.token)
+                        setCookie('userId', data.id)
                         location.href = redirectTo;
                     }
                 })
