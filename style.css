@@ -907,12 +907,15 @@ Version:1.0
 .header.shop .cat-heading {
 	font-size: 20px;
 	color: #fff;
+
+	display: flex;
+	justify-content: center;
 }
 
 .header.shop .cat-heading i {
 	color: #fff;
 	display: inline-block;
-	margin-right: 15px;
+	margin-left: 15px;
 	font-size: 22px;
 }
 
@@ -5868,6 +5871,18 @@ Version:1.0
 	font-size: 20px !important;
 }
 
+/* nav categories */
+.header.shop .main-category li .mega-menu {
+	padding: 0;
+	/* display: flex;
+	flex-direction: column;
+	align-items: center; */
+}
+
+.header.shop .main-category li .mega-menu li {
+	position: relative;
+	top: -10px;
+}
 
 :root {
 	--dark-green: #639251;

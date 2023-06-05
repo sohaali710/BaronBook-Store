@@ -91,11 +91,11 @@
 											data-lang="logout">تسجيل خروج</a></li>
 								</div>
 								<div id="logged-out">
-									<li><i class="fa-solid fa-user"></i><a href="user-signup.html"
+									<li id="signup"><i class="fa-solid fa-user"></i><a href="user-signup.html"
 											data-lang="signup">إنشاء
 											حساب</a></li>
-									<li><i class="fa-solid fa-arrow-right-to-bracket"></i><a href="user-login.html"
-											data-lang="login">تسجيل دخول</a></li>
+									<li id="login"><i class="fa-solid fa-arrow-right-to-bracket"></i><a
+											href="user-login.html" data-lang="login">تسجيل دخول</a></li>
 								</div>
 							</ul>
 						</div>
@@ -132,12 +132,12 @@
 					<div class="col-lg-7 col-md-7 col-12">
 						<div class="search-bar-top">
 							<div class="search-bar">
-								<select>
+								<!-- <select>
 									<option selected="selected">All Category</option>
 									<option>watch</option>
 									<option>mobile</option>
 									<option>kid’s item</option>
-								</select>
+								</select> -->
 								<form>
 									<input name="search" placeholder="Search Products Here....." type="search">
 									<button class="btnn"><i class="ti-search"></i></button>
@@ -173,8 +173,9 @@
 					<div class="row">
 						<div class="col-lg-3">
 							<div class="all-category">
-								<h3 class="cat-heading" data-lang="categories"><i class="fa fa-bars"
-										aria-hidden="true"></i>CATEGORIES</h3>
+								<h3 class="cat-heading"><span data-lang="categories"
+										class="text-uppercase">CATEGORIES</span><i class="fa fa-bars"
+										aria-hidden="true"></i></h3>
 								<ul class="main-category">
 									<li><a href="#">New Arrivals <i class="fa fa-angle-right"
 												aria-hidden="true"></i></a>
@@ -3329,6 +3330,7 @@
 	<!-- Active JS -->
 	<script src="js/active.js"></script>
 	<!-- Custom JS -->
+	<script src="js/scripts/nav-get-categories.js" type="module"></script>
 	<script src="js/scripts/logout.js" type="module"></script>
 	<script src="js/scripts/changeLang.js" type="module"></script>
 </body>
