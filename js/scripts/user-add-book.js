@@ -5,7 +5,6 @@ import { getSubcategories } from './get-subcategories-select.js';
 
 const userToken = 'user_access_token'
 
-
 // redirect to login
 !getCookie(userToken) ? location.href = 'user-login.html' : null;
 
@@ -29,19 +28,17 @@ mainCategoriesContainer.addEventListener('change', e => {
 
 
 // #region add book
-// render select for main and sub
-
-
 const addBookForm = document.getElementById('add-book-form')
 const titleInput = document.getElementById('title')
 const descriptionInput = document.getElementById('description')
+const isAuthorInput = document.getElementById('isAuthor')
 const authorNameInput = document.getElementById('authorName')
 const langInput = document.getElementById('lang')
 const pageNoInput = document.getElementById('pageNo')
 const publishingHouseInput = document.getElementById('publishingHouse')
+const releaseDateInput = document.getElementById('releaseDate')
 const imgInput = document.getElementById('img')
 const bookInput = document.getElementById('book')
-const releaseDateInput = document.getElementById('releaseDate')
 
 const bookAlert = document.getElementById('book-added')
 
@@ -52,13 +49,16 @@ addBookForm.addEventListener('submit', event => {
         [
             titleInput,
             descriptionInput,
+            isAuthorInput,
             authorNameInput,
             langInput,
             pageNoInput,
             publishingHouseInput,
+            releaseDateInput,
             imgInput,
             bookInput,
-            releaseDateInput
+            mainCategoriesContainer,
+            subcategoriesContainer
         ])
 
     const isInputsValid = textInputsValidation.every(inputValid => inputValid)
