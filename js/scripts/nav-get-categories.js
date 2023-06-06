@@ -15,9 +15,9 @@ function navGetCategories(container) {
                 const subcategArr = data.data
                 if (subcategArr.length) {
                     subcategArr.forEach((subcateg => {
-                        const { name: subName } = subcateg
+                        const { _id: subId, name: subName } = subcateg
 
-                        subcategLis += `<li><a href="#">${subName}</a></li>`
+                        subcategLis += `<li><a href="books-in-subcategory.html?subId=${subId}">${subName}</a></li>`
 
                         ulOpeningTag = ` <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                             <ul class="mega-menu">`
@@ -26,14 +26,13 @@ function navGetCategories(container) {
                     }))
 
                     categEle += `
-                        <li><a href="#">${categName}`
+                        <li><a href="books-in-main-category.html?mainId=${categId}">${categName}`
                         + ulOpeningTag + subcategLis + ulClosingTag +
                         `</li>`
                 } else {
                     categEle += `<li><a href="#">${categName}</a></li>`
                 }
 
-                console.log(categEle)
                 container.innerHTML = categEle
             })
 
