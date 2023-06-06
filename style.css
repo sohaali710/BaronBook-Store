@@ -4839,19 +4839,21 @@ Version:1.0
 
 .main-sidebar .single-post {
 	position: relative;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 2px solid #ddd;
 	display: inline-block;
 	padding: 17px 0;
 
 	text-align: center;
 }
 
-.main-sidebar .single-post:last-child {
+/* .main-sidebar .single-post:last-child {
 	padding-bottom: 0px;
 	border: none;
-}
+} */
 
 .main-sidebar .single-post .image {
+	width: 100px;
+	height: 100px;
 	margin-bottom: 15px;
 }
 
@@ -4876,8 +4878,7 @@ Version:1.0
 
 .main-sidebar .single-post .content h5 a {
 	color: #2C2D3F;
-	font-weight: 500;
-	font-size: 14px;
+	font-size: 24px;
 	font-weight: 500;
 	margin-top: 10px;
 	display: block;
@@ -5031,7 +5032,7 @@ Version:1.0
 
 .blog-single .blog-meta .author i {
 	color: var(--dark-green);
-	margin-right: 10px;
+	margin-left: 10px;
 	font-size: 13px;
 }
 
@@ -5154,13 +5155,13 @@ Version:1.0
 	margin-bottom: 30px;
 	display: block;
 	background: #fff;
-	padding-left: 12px;
+	padding-right: 12px;
 }
 
 .blog-single .comments .comment-title:before {
 	position: absolute;
 	content: "";
-	left: 0;
+	right: 0;
 	bottom: -1px;
 	height: 100%;
 	width: 3px;
@@ -5257,13 +5258,13 @@ Version:1.0
 	margin-bottom: 30px;
 	display: block;
 	background: #fff;
-	padding-left: 12px;
+	padding-right: 12px;
 }
 
 .blog-single .reply .reply-title:before {
 	position: absolute;
 	content: "";
-	left: 0;
+	right: 0;
 	bottom: -1px;
 	height: 100%;
 	width: 3px;
@@ -5970,11 +5971,51 @@ Version:1.0
 	margin-bottom: 30px;
 }
 
-.main-sidebar .single-widget .posts {
-	width: 100%;
+.single-widget .posts {
+	width: 70%;
+	margin: auto;
 
 	display: flex;
-	justify-content: space-between;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.single-widget .posts .image {
+	margin-bottom: 30px;
+}
+
+.single-widget .posts .image a {
+	display: block;
+
+	width: 100px;
+	height: 100px;
+
+	border-radius: 50%;
+	background-color: #eee;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.single-widget .posts .image a i {
+	font-size: 30px;
+}
+
+.single-widget .posts .single-post:hover {
+	color: var(--dark-green);
+}
+
+.single-widget .posts .single-post:hover h5 a {
+	color: var(--dark-green);
+}
+
+.single-widget .posts .single-post:hover {
+	border-bottom: 2px solid var(--dark-green);
+}
+
+.blog-single .sub-title {
+	margin-bottom: 15px;
 }
 
 :root {
