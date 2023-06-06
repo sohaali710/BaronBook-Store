@@ -12,6 +12,9 @@ const translation = {
         authors: 'Authors',
         contactUs: 'Contact Us',
 
+        // home page
+        allBooks: 'All Books',
+
         // user-signup & user-login pages
         signupBtn: 'Sing up',
         loginBtn: 'Log in',
@@ -70,6 +73,9 @@ const translation = {
         authors: 'المؤلفون',
         contactUs: 'تواصل معنا',
 
+        // home page
+        allBooks: 'جميع الكتب',
+
         // user-signup & user-login pages
         signupBtn: 'إنشاء حساب',
         loginBtn: 'تسجيل دخول',
@@ -101,7 +107,7 @@ const translation = {
         // add book icon in my account dropdown [home]
         addBookIcon: 'إضافة كتاب',
 
-        // form validation
+        // add book form validation
         bookTitleError: 'ادخل اسم الكتاب .',
         bookDescError: 'ادخل وصف الكتاب.',
         bookAuthorError: 'ادخل اسم مؤلف الكتاب .',
