@@ -62,7 +62,7 @@
 
 /* categories checkbox */
 .checkbox {
-    max-height: 100px;
+    max-height: 88px;
     padding: 10px;
 
     overflow: auto;
@@ -74,11 +74,85 @@
     display: block;
 }
 
-/* home categories accordion */
+/* categories accordion */
 .header.shop .main-category li .mega-menu {
     padding: 0 !important;
 
     width: 200px !important;
+}
+
+.accordion-item .accordion-button,
+.accordion-item .subItem {
+    position: relative;
+}
+
+.accordion-item .accordion-button i,
+.accordion-item .subItem i {
+    align-self: flex-start;
+    margin-left: 24px;
+
+    cursor: pointer;
+
+    position: absolute;
+    left: 90px;
+
+    font-size: 22px;
+}
+
+
+.accordion-item .accordion-button i.fa-xmark,
+.accordion-item .subItem i.fa-xmark {
+    font-size: 26px;
+
+    left: 50px;
+}
+
+.accordion-item .accordion-button i.fa-xmark:hover,
+.accordion-item .subItem i.fa-xmark:hover {
+    color: var(--light-red);
+}
+
+.accordion-item .accordion-button i.fa-pen-to-square:hover,
+.accordion-item .subItem i.fa-pen-to-square:hover {
+    color: var(--dark-green);
+}
+
+.box-title:has(.accordion) .box-title {
+    text-align: center !important;
+}
+
+.accordion-body li {
+    list-style: none;
+    margin-right: 10px;
+    padding: 14px 30px 14px 0;
+    border-bottom: 1px solid var(--dark-blue);
+}
+
+.accordion-body li:last-child {
+    border-bottom: transparent;
+}
+
+.accordion-button::after {
+    margin-right: 10px;
+}
+
+#edit-main-category-form .image img {
+    max-width: 50%;
+
+    display: block;
+    margin: auto;
+
+    border-radius: 2px;
+}
+
+.main-header>.navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar a,
+.sidebar a {
+    text-decoration: none;
 }
 
 :root {
@@ -86,6 +160,7 @@
     --light-green: rgb(113, 165, 93);
     --dark-red: #9A1A18;
     --light-red: #BE1937;
+    --dark-blue: #3c8dbc;
     --dark-cyan: #1CB3CB;
     --light-cyan: #36C7DE;
     --light-gray: #F7F7F6;
