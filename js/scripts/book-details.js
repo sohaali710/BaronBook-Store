@@ -7,12 +7,14 @@ let readBook = document.querySelector('.readBook')
 
 const selectedBookId = location.search.split("=")[1];
 
-fetch(`http://localhost:5000/get-book-by-id/${selectedBookId}`).then(res => res.json()).then(data => {
-    let { _id, title, description, subcateg, authorname, releasedate, img, book } = data.data
-    img = img.replace('public', 'http://localhost:5000')
-    book = book.replace('public', 'http://localhost:5000')
+if (selectedBookId) {
+    fetch(`http://localhost:5000/get-book-by-id/${selectedBookId}`).then(res => res.json()).then(data => {
+        let { _id, title, description, subcateg, authorname, releasedate, img, book } = data.data
+        releasedate = releasedate.split("T")[0]
+        img = img.replace('public', 'http://localhost:5000')
+        book = book.replace('public', 'http://localhost:5000')
 
-    bookContainer.innerHTML = `
+        bookContainer.innerHTML = `
     <div class="blog-detail">
 							<h2 class="blog-title">${title}</h2>
 							<div class="blog-meta">
@@ -33,21 +35,21 @@ fetch(`http://localhost:5000/get-book-by-id/${selectedBookId}`).then(res => res.
 						</div>
     `
 
-    bookImg.innerHTML = `<img src="${img}" alt="#">`
+        bookImg.innerHTML = `<img src="${img}" alt="#">`
 
-    downloadBook.innerHTML = `
+        downloadBook.innerHTML = `
                             <div class="image">
-                                <a href="${book}" download target="_black">
+                                <a href="${book}" download="download.pdf" target="_black">
                                 <i class="fa-solid fa-download"></i>
                                 </a>
                             </div>
                             <div class="content">
                                 <h5 class="">
-                                    <a href="${book}" download target="_black">تحميل الكتاب</a>
+                                    <a href="${book}" download="download.pdf" target="_black">تحميل الكتاب</a>
                                 </h5>
                             </div>`
 
-    readBook.innerHTML = `
+        readBook.innerHTML = `
                         <div class="image">
                             <a href="${book}" download target="_black">
                             <i class="fa-solid fa-eye"></i>
@@ -58,4 +60,7 @@ fetch(`http://localhost:5000/get-book-by-id/${selectedBookId}`).then(res => res.
                                 <a href="${book}" download target="_black">قراءة الكتاب</a>
                             </h5>
                         </div>`
-});
+    });
+} else {
+    location.href = 'index.html'
+}

@@ -5922,6 +5922,12 @@ Version:1.0
 	background: transparent;
 }
 
+/* headers */
+.product-area .section-title h2 {
+	font-size: 36px !important;
+	font-weight: 600;
+}
+
 /* user add book */
 .shop.checkout .form .form-group input[type=file] {
 	height: 59px;
@@ -6018,11 +6024,48 @@ Version:1.0
 	margin-bottom: 15px;
 }
 
+/* categories page */
+.product-area .accordion .accordion-button::after {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+.product-area .accordion .accordion-body li a:hover {
+	color: var(--dark-blue);
+}
+
+.accordion-body li {
+	list-style: none;
+	margin-right: 10px;
+	padding: 10px 30px 10px 0;
+	border-bottom: 1px solid var(--dark-blue);
+}
+
+.accordion-body li:last-child {
+	border-bottom: transparent;
+}
+
+/* book card */
+.product-area .single-product {
+	height: 70vh;
+	border: 1px solid #eee;
+	border-radius: 2px;
+
+	padding-bottom: 10px;
+}
+
+.product-area .single-product .product-img {
+	height: 80%;
+
+	border-radius: 2px 2px 0 0;
+}
+
 :root {
 	--dark-green: #639251;
 	--light-green: rgb(113, 165, 93);
 	--dark-red: #9A1A18;
 	--light-red: #BE1937;
+	--dark-blue: #3c8dbc;
 	--dark-cyan: #1CB3CB;
 	--light-cyan: #36C7DE;
 	--light-gray: #F7F7F6;
