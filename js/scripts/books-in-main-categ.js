@@ -17,17 +17,8 @@ if (mainCategId) {
 								<div class="single-product">
 									<div class="product-img">
 										<a href="book-details.html?bookId=${_id}">
-											<img class="default-img" src="${img}" alt="book image">
+											<img class="default-img" src="${img}" alt="book image"loading="lazy">
 										</a>
-										<div class="button-head">
-											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal" title="Download PDF"
-                                                href="${book}" download target="_black"><i class="ti-download"></i><span>Download PDF</span></a>
-											</div>
-											<div class="product-action-2">
-												<a title="Download" href="${book}" download target="_black">Download</a>
-											</div>
-										</div>
 									</div>
 									<div class="product-content text-center">
 										<h3><a href="book-details.html?bookId=${_id}">${title}</a></h3>
