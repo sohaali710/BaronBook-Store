@@ -65,7 +65,6 @@ addBookForm.addEventListener('submit', event => {
 
 
     const formData = new FormData(addBookForm);
-    formData.append('user', getCookie('userId'))
 
     const data = Object.fromEntries(formData)
     console.log(data)
