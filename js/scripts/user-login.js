@@ -47,7 +47,6 @@ if (getCookie(userToken)) {
                             deleteCookie(adminToken, data.token)
                         }
                         setCookie(userToken, data.token)
-                        setCookie('userId', data.id)
                         location.href = redirectTo;
                     }
                 })
