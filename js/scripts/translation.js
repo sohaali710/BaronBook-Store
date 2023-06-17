@@ -1,10 +1,14 @@
 const translation = {
     fr: {
         // header login icons
-        myAccount: 'My account',
         signup: 'Signup',
         login: 'Login',
         logout: 'Logout',
+        myAccount: 'My account',
+        // my account dropdown
+        userProfileIcon: 'My Profile',
+        addBookIcon: 'Add Book',
+        userSettingsIcon: 'Settings',
 
         // navbar icons
         home: 'Home',
@@ -28,8 +32,18 @@ const translation = {
         female: 'Female',
         birthdate: 'Birth Date',
 
+        // user profile page
+        userName: 'Name : ',
+        userEmail: 'Email : ',
+        userGender: 'Gender : ',
+        userBirthdate: 'Birthdate : ',
+        userBooks: 'The books you added : ',
+
+        // user settings
+        userSettings: 'Edit Your Profile',
+
         // user-upload-book page
-        userAddBook: 'Add Book',
+        userAddBookHeader: 'Add Book',
         title: 'Book Title',
         description: 'Book Description',
         isAuthor: 'Are you the book author?',
@@ -43,8 +57,6 @@ const translation = {
         uploadBook: 'Upload Book',
         releaseDate: 'Release Date',
         uploadBookBtn: 'Add The Book',
-        // add book icon in my account dropdown [home]
-        addBookIcon: 'Add Book',
 
         // add book form validation
         bookTitleError: 'Enter the book title.',
@@ -59,13 +71,20 @@ const translation = {
 
         userNameError: 'Enter you name.',
         birthDateError: 'Enter your birth date',
+
+        // update profile form
+        saveUpdatesBtn: 'Save Updates',
     },
     ar: {
         // header login icons
-        myAccount: 'حسابي',
         signup: 'إنشاء حساب',
         login: 'تسجيل دخول',
         logout: 'تسجيل خروج',
+        myAccount: 'حسابي',
+        // my account dropdown
+        userProfileIcon: 'صفحتي',
+        addBookIcon: 'إضافة كتاب',
+        userSettingsIcon: 'الإعدادات',
 
         // navbar icons
         home: 'الرئيسية',
@@ -89,8 +108,18 @@ const translation = {
         female: 'أنثى',
         birthdate: 'تاريخ الميلاد',
 
+        // user profile
+        userName: 'الاسم : ',
+        userEmail: 'الإيميل : ',
+        userGender: 'النوع : ',
+        userBirthdate: 'تاريخ الميلاد : ',
+        userBooks: 'الكتب التي أضفتها : ',
+
+        // user settings
+        userSettings: 'تعديل بياناتك',
+
         // user-upload-book page
-        userAddBook: 'إضافة كتاب',
+        userAddBookHeader: 'إضافة كتاب',
         title: 'اسم الكتاب',
         description: 'وصف الكتاب',
         isAuthor: 'هل أنت مؤلف هذا الكتاب.',
@@ -104,8 +133,6 @@ const translation = {
         uploadBook: 'حمل الكتاب بصيغة PDF أو DOC',
         releaseDate: 'تاريخ نشر الكتاب',
         uploadBookBtn: 'إضافة الكتاب',
-        // add book icon in my account dropdown [home]
-        addBookIcon: 'إضافة كتاب',
 
         // add book form validation
         bookTitleError: 'ادخل اسم الكتاب .',
@@ -120,6 +147,9 @@ const translation = {
 
         birthDateError: 'من فضلك ادخل تاريخ الميلاد .',
         userNameError: 'من فضلك ادخل اسمك .',
+
+        // update profile form
+        saveUpdatesBtn: 'حفظ التعديلات',
     }
 }
 

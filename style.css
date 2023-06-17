@@ -1182,7 +1182,11 @@ Version:1.0
 
 .header.shop .nav li .dropdown li a {
 	color: #333;
-	padding: 8px 15px;
+	/* padding: 8px 15px; */
+	display: block;
+	width: 100%;
+	text-align: center;
+
 	font-weight: 400;
 	background: #fff;
 }
@@ -5922,21 +5926,59 @@ Version:1.0
 	background: transparent;
 }
 
+.header.shop .list-main .dropdown {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+
+}
+
+.header.shop .list-main li {
+	border-right: 0 !important;
+}
+
 /* headers */
 .product-area .section-title h2 {
 	font-size: 36px !important;
 	font-weight: 600;
 }
 
+/* user profile */
+.userProfileContainer {
+	text-align: right;
+
+	width: 70%;
+	padding: 50px;
+	margin: auto;
+
+	margin-top: 70px;
+
+	background-color: #F6F7FB;
+	border: 1px solid #eee;
+	border-radius: 2px;
+
+	font-size: 24px;
+}
+
+.userProfileContainer li {
+	margin-bottom: 40px;
+}
+
+.userProfileContainer li span {
+	font-size: 30px;
+	font-weight: 600;
+
+	margin-left: 20px;
+}
+
+
 /* user add book */
 .shop.checkout .form .form-group input[type=file] {
 	height: 59px;
 }
 
-#add-book-form select#main-categories-select,
-#add-book-form select#subcategories-select,
-#add-book-form select#isAuthor,
-#add-book-form select#lang {
+#add-book-form select,
+#update-profile-form select {
 	display: inline-block !important;
 
 	width: 100%;
@@ -5950,12 +5992,12 @@ Version:1.0
 	background: #F6F7FB;
 
 	cursor: pointer;
+
+	font-size: 18px;
 }
 
-#add-book-form .form-group:has(select#main-categories-select) .nice-select,
-#add-book-form .form-group:has(select#subcategories-select) .nice-select,
-#add-book-form .form-group:has(select#isAuthor) .nice-select,
-#add-book-form .form-group:has(select#lang) .nice-select {
+#add-book-form .form-group .nice-select,
+#update-profile-form .form-group .nice-select {
 	display: none;
 }
 
