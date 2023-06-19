@@ -8,7 +8,7 @@ const adminToken = 'admin_access_token'
 
 let redirectTo = ''
 
-if (getCookie(userToken)) {
+if (getCookie(userToken) && !getCookie(adminToken)) {
     logInOutNav(userToken)
 }
 // else if (getCookie(adminToken)) {
@@ -19,8 +19,9 @@ logOutBtn.addEventListener('click', event => {
     if (getCookie(userToken)) {
         deleteCookie(userToken)
         location.href = 'user-login.html'
-    } else if (getCookie(adminToken)) {
-        console.log('here')
+    }
+
+    if (getCookie(adminToken)) {
         deleteCookie(adminToken)
         location.href = 'admin-login.html'
     }
