@@ -10,6 +10,8 @@ let data = {};
 const adminToken = 'admin_access_token'
 let redirectTo = 'admin-control-panel.html'
 
+const userToken = 'user_access_token'
+
 
 if (getCookie(adminToken)) {
     location.href = redirectTo
@@ -45,9 +47,7 @@ if (getCookie(adminToken)) {
                 .then(data => {
                     if (data) {
                         console.log(data)
-                        if (getCookie('user_access_token')) {
-                            deleteCookie('user_access_token', data.token)
-                        }
+                        getCookie(userToken) ? deleteCookie(userToken) : null;
                         setCookie(adminToken, data.token)
                         location.href = redirectTo;
                     }
