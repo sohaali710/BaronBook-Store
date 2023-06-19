@@ -14,7 +14,7 @@ let categAlert = document.querySelector('.categ-added')
 !getCookie(adminToken) ? location.href = 'admin-login.html' : null;
 
 // #region all main categories
-const mainCategoriesContainer = document.querySelector('.main-categories')
+const mainCategoriesContainer = document.querySelector('#add-subcategory-form .main-categories')
 let categContainer = document.querySelector('#accordionExample')
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -75,7 +75,6 @@ addCategForm.addEventListener('submit', event => {
     }
 })
 // #endregion add main category
-
 
 // #region add subcategory
 let addSubcategForm = document.getElementById('add-subcategory-form')
@@ -226,10 +225,14 @@ categContainer.addEventListener('click', e => {
 let editSubcategForm = document.getElementById('edit-subcategory-form')
 let editSubcategNameInput = editSubcategForm.querySelector('#categ-name')
 
+const mainCategCheckbox = document.querySelector('#exampleModal1 .main-categories')
+
 categContainer.addEventListener('click', e => {
     if (e.target.matches('.subItem .fa-pen-to-square')) {
         const subId = e.target.getAttribute('subId')
-        console.log(subId)
+        let checkbox = ''
+
+        getMainCategories(mainCategCheckbox)
 
         /** assign saved data to the inputs*/
         fetch(`http://localhost:5000/get-sub-categ-by-id/${subId}`)
@@ -237,36 +240,58 @@ categContainer.addEventListener('click', e => {
                 return res.json()
             })
             .then(data => {
-                let { name } = data.data
-                console.log(data.data)
-
+                let { name, mainCateg } = data.data
                 editSubcategNameInput.value = name
+
+                mainCateg.forEach(main => {
+                    checkbox = mainCategCheckbox.querySelectorAll('input[type=checkbox]')
+
+                    checkbox.forEach(checkItem => {
+                        if (checkItem.name == main.name) {
+                            checkItem.checked = true
+                        } else {
+                            checkItem.checked = false
+                        }
+
+                    })
+
+                })
+
             });
 
         /**  edit subcategory*/
         editSubcategForm.addEventListener('submit', event => {
             event.preventDefault();
 
-            const checkSubcategNameReturn = checkSubcategName(editSubcategNameInput)
+            const checkSubcategNameReturn = checkTextInputs([editSubcategNameInput])
+
+            let checkTextInputsReturn = checkCheckBoxInputs(checkbox)
 
             const formData = new FormData(editSubcategForm);
-            formData.append('id', subId)
             const data = Object.fromEntries(formData)
             console.log(data)
 
-            const myHeaders = new Headers();
+            let { name, ...obj } = data
 
+            let mainIds = []
+            for (let i in obj) {
+                mainIds.push(obj[i])
+            }
+
+            let bodyData = { name, mainIds, id: subId }
+            console.log(bodyData)
+            const myHeaders = new Headers();
             const options = {
                 method: 'POST',
                 headers: myHeaders,
-                body: formData
+                body: JSON.stringify(bodyData)
             }
 
-            delete options.headers['Content-Type'];
+            myHeaders.append('Content-Type', 'application/json');
             myHeaders.append('authorization', `Bearer ${getCookie(adminToken)}`);
 
-            if (checkSubcategNameReturn) {
-                fetch(`http://localhost:5000/admin/edit-sub-categ`, options)
+            if (checkSubcategNameReturn && checkTextInputsReturn) {
+                fetch(`http://localhost:5000/admin/edit-sub`, options)
                     .then(res => {
                         console.log(res);
                         if (res.status == 200) {
@@ -288,6 +313,79 @@ categContainer.addEventListener('click', e => {
 // #endregion edit subcateg
 
 
+// #region delete main categ
+const mainConfirmDelete = document.querySelector('#exampleModal3 #confirmDelete')
+
+categContainer.addEventListener('click', e => {
+    if (e.target.matches('.accordion-button .fa-xmark')) {
+        const mainId = e.target.getAttribute('mainId')
+        console.log(mainId)
+
+
+        mainConfirmDelete.addEventListener('click', () => {
+            const myHeaders = new Headers();
+            myHeaders.append('authorization', `Bearer ${getCookie(adminToken)}`);
+
+            const options = {
+                method: 'GET',
+                headers: myHeaders
+            }
+
+            fetch(`http://localhost:5000/admin/delete-main/${mainId}`, options)
+                .then(res => {
+                    console.log(res)
+                    if (res.status === 200) {
+                        getCategoriesAccordion(categContainer)
+                        return res.json();
+                    }
+                })
+                .then(data => {
+                    console.log(data)
+                })
+                .catch(err => console.log(err))
+
+        })
+
+    }
+})
+// #endregion delete main categ
+
+// #region delete subcateg
+const subConfirmDelete = document.querySelector('#exampleModal4 #confirmDelete')
+
+categContainer.addEventListener('click', e => {
+    if (e.target.matches('.subItem .fa-xmark')) {
+        const subId = e.target.getAttribute('subId')
+        console.log(subId)
+
+
+        subConfirmDelete.addEventListener('click', () => {
+            const myHeaders = new Headers();
+            myHeaders.append('authorization', `Bearer ${getCookie(adminToken)}`);
+
+            const options = {
+                method: 'GET',
+                headers: myHeaders
+            }
+
+            fetch(`http://localhost:5000/admin/delete-sub/${subId}`, options)
+                .then(res => {
+                    console.log(res)
+                    if (res.status === 200) {
+                        getCategoriesAccordion(categContainer)
+                        return res.json();
+                    }
+                })
+                .then(data => {
+                    console.log(data)
+                })
+                .catch(err => console.log(err))
+
+        })
+
+    }
+})
+// #endregion delete subcateg
 
 
 // #region load img from database to input file
@@ -304,7 +402,7 @@ function loadURLToInputFiled(url) {
     getImgURL(url, (blob) => {
         // Load img blob to input
         // WIP: UTF8 character error
-        let fileName = 'image.jpg'
+        let fileName = url.split('uploads\\')[1].slice(0, -4)
         let file = new File([blob], fileName, { type: "image/jpg", lastModified: new Date().getTime() }, 'utf-8');
         let container = new DataTransfer();
         container.items.add(file);

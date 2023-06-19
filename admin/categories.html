@@ -280,7 +280,6 @@
           </div>
         </div>
 
-
         <!-- edit subcategory Modal -->
         <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="1Label" aria-hidden="true">
           <div class="modal-dialog h-75 d-flex align-items-center m-auto my-5">
@@ -300,6 +299,10 @@
                         <small></small>
                       </div>
                     </div>
+                    <div class="form-group main-categories">
+
+
+                    </div>
                   </div><!-- /.box-body -->
 
                 </div>
@@ -313,6 +316,50 @@
             </div>
           </div>
         </div>
+
+
+        <!-- #region Delete Main Categ Modal -->
+        <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3"
+          aria-hidden="true">
+          <div class="modal-dialog delete-modal">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h4 class="modal-title" id="exampleModalLabel3">حذف القسم</h4>
+              </div>
+              <div class="modal-body">
+                <p class="fs-6 text-center">هل أنت متأكد أنك تريد حذف هذا القسم ؟</p>
+              </div>
+              <div class="modal-footer" dir="ltr">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء الحذف</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete" data-bs-dismiss="modal">نعم</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- #endregion Delete Main Categ Modal -->
+
+        <!-- #region Delete Subcateg Modal -->
+        <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel4"
+          aria-hidden="true">
+          <div class="modal-dialog delete-modal">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h4 class="modal-title" id="exampleModalLabel4">حذف القسم</h4>
+              </div>
+              <div class="modal-body">
+                <p class="fs-6 text-center">هل أنت متأكد أنك تريد حذف هذا القسم ؟</p>
+              </div>
+              <div class="modal-footer" dir="ltr">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء الحذف</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete" data-bs-dismiss="modal">نعم</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- #endregion Delete Subcateg Modal -->
+
 
       </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
