@@ -138,6 +138,13 @@
   <script src="./dist/js/demo.js" type="text/javascript"></script>
   <!-- Scripts -->
   <script src="../js/scripts/logout.js" type="module"></script>
+
+  <script type="module">
+    import { getCookie } from '../js/scripts/cookies.js'
+
+    const adminToken = 'admin_access_token'
+    !getCookie(adminToken) ? location.href = 'admin-login.html' : null;
+  </script>
 </body>
 
 </html>
