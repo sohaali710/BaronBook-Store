@@ -6102,6 +6102,22 @@ Version:1.0
 	border-radius: 2px 2px 0 0;
 }
 
+/* search */
+.search-no-books {
+	text-align: center;
+
+	font-weight: bold;
+	font-size: 22px;
+
+	margin-top: 100px;
+}
+
+.hide {
+	display: none !important;
+}
+
+
+
 :root {
 	--dark-green: #639251;
 	--light-green: rgb(113, 165, 93);
