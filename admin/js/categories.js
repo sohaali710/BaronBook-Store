@@ -56,7 +56,7 @@ addCategForm.addEventListener('submit', event => {
 
 
     if (checkCategNameReturn && checkCategImgReturn) {
-        fetch('http://localhost:5000/admin/add-main-categ', options)
+        fetch('http://191.101.232.235/api/admin/add-main-categ', options)
             .then(res => {
                 console.log(res);
                 if (res.status == 200) {
@@ -123,7 +123,7 @@ addSubcategForm.addEventListener('submit', event => {
     </div>`
 
     if (checkCategNameReturn && checkTextInputsReturn) {
-        fetch('http://localhost:5000/admin/add-sub-categ', options)
+        fetch('http://191.101.232.235/api/admin/add-sub-categ', options)
             .then(res => {
                 console.log(res);
                 if (res.status == 200) {
@@ -159,14 +159,14 @@ categContainer.addEventListener('click', e => {
         console.log(mainId)
 
         /** assign saved data to the inputs*/
-        fetch(`http://localhost:5000/main-categ-by-id/${mainId}`)
+        fetch(`http://191.101.232.235/api/main-categ-by-id/${mainId}`)
             .then(res => {
                 return res.json()
             })
             .then(data => {
                 let { name, img } = data.data
                 console.log(data.data)
-                img = img.replace('public', 'http://localhost:5000')
+                img = img.replace('public', 'http://191.101.232.235/api')
 
                 editCategNameInput.value = name
                 categImg.innerHTML = `<img src="${img}" alt="category image"/>`
@@ -200,7 +200,7 @@ categContainer.addEventListener('click', e => {
             myHeaders.append('authorization', `Bearer ${getCookie(adminToken)}`);
 
             if (checkCategNameReturn && checkCategImgReturn) {
-                fetch(`http://localhost:5000/admin/edit-main-categ`, options)
+                fetch(`http://191.101.232.235/api/admin/edit-main-categ`, options)
                     .then(res => {
                         console.log(res);
                         if (res.status == 200) {
@@ -235,7 +235,7 @@ categContainer.addEventListener('click', e => {
         getMainCategories(mainCategCheckbox)
 
         /** assign saved data to the inputs*/
-        fetch(`http://localhost:5000/get-sub-categ-by-id/${subId}`)
+        fetch(`http://191.101.232.235/api/get-sub-categ-by-id/${subId}`)
             .then(res => {
                 return res.json()
             })
@@ -291,7 +291,7 @@ categContainer.addEventListener('click', e => {
             myHeaders.append('authorization', `Bearer ${getCookie(adminToken)}`);
 
             if (checkSubcategNameReturn && checkTextInputsReturn) {
-                fetch(`http://localhost:5000/admin/edit-sub`, options)
+                fetch(`http://191.101.232.235/api/admin/edit-sub`, options)
                     .then(res => {
                         console.log(res);
                         if (res.status == 200) {
@@ -331,7 +331,7 @@ categContainer.addEventListener('click', e => {
                 headers: myHeaders
             }
 
-            fetch(`http://localhost:5000/admin/delete-main/${mainId}`, options)
+            fetch(`http://191.101.232.235/api/admin/delete-main/${mainId}`, options)
                 .then(res => {
                     console.log(res)
                     if (res.status === 200) {
@@ -368,7 +368,7 @@ categContainer.addEventListener('click', e => {
                 headers: myHeaders
             }
 
-            fetch(`http://localhost:5000/admin/delete-sub/${subId}`, options)
+            fetch(`http://191.101.232.235/api/admin/delete-sub/${subId}`, options)
                 .then(res => {
                     console.log(res)
                     if (res.status === 200) {
