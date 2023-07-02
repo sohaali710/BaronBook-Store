@@ -11,7 +11,7 @@ let bookUI = ''
 let routeName = ''
 
 document.addEventListener('DOMContentLoaded', () => {
-	fetch(`http://localhost:5000/all-books`).then(res => res.json()).then(data => {
+	fetch(`http://191.101.232.235/api/all-books`).then(res => res.json()).then(data => {
 		bookUI = ''
 
 		data.data.forEach(bookData => {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		searchInp.addEventListener('input', search(data.data, allBooksContainer))
 	});
 
-	fetch(`http://localhost:5000/day-famous-books`).then(res => res.json()).then(data => {
+	fetch(`http://191.101.232.235/api/day-famous-books`).then(res => res.json()).then(data => {
 		bookUI = ''
 		let allBooks = []
 		data.data.forEach(bookData => {
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // 		if (routeName == 'all-books') {
 // 			bookUI = ''
 
-// 			fetch(`http://localhost:5000/${routeName}`).then(res => res.json()).then(data => {
+// 			fetch(`http://191.101.232.235/api/${routeName}`).then(res => res.json()).then(data => {
 // 				data.data.forEach(bookData => {
 // 					let { _id, title, subcateg, authorname, img, book } = bookData
 // 					img = img.replace('public', 'http://localhost:5000')
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // 		} else {
 // 			bookUI = ''
 
-// 			fetch(`http://localhost:5000/${routeName}`).then(res => res.json()).then(data => {
+// 			fetch(`http://191.101.232.235/api/${routeName}`).then(res => res.json()).then(data => {
 // 				data.data.forEach(bookData => {
 // 					let { _id, title, subcateg, authorname, img, book } = bookData.book
 // 					img = img.replace('public', 'http://localhost:5000')

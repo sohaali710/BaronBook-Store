@@ -10,7 +10,7 @@ function userProfile(container) {
     const myHeaders = new Headers();
     myHeaders.append('authorization', `Bearer ${getCookie(userToken)}`);
 
-    fetch('http://localhost:5000/user/user-data', {
+    fetch('http://191.101.232.235/api/user/user-data', {
         method: 'GET',
         headers: myHeaders
     })

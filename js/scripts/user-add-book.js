@@ -89,7 +89,7 @@ addBookForm.addEventListener('submit', event => {
 
 
     if (isInputsValid) {
-        fetch('http://localhost:5000/user/add-new-book', options)
+        fetch('http://191.101.232.235/api/user/add-new-book', options)
             .then(res => {
                 console.log(res);
                 if (res.status == 200) {

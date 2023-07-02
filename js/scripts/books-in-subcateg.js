@@ -12,7 +12,7 @@ if (subcategName) {
 
 if (subcategId) {
 	document.addEventListener('DOMContentLoaded', () => {
-		fetch(`http://localhost:5000/get-books-by-sub/${subcategId}`).then(res => res.json()).then(data => {
+		fetch(`http://191.101.232.235/api/get-books-by-sub/${subcategId}`).then(res => res.json()).then(data => {
 			console.log(data);
 			data.data.forEach(bookData => {
 				let { _id, title, subcateg, authorname, img, book } = bookData

@@ -22,7 +22,7 @@ function assignDataToInputs() {
     const myHeaders = new Headers();
     myHeaders.append('authorization', `Bearer ${getCookie(userToken)}`);
 
-    fetch('http://localhost:5000/user/user-data', {
+    fetch('http://191.101.232.235/api/user/user-data', {
         method: 'GET',
         headers: myHeaders
     })
@@ -80,7 +80,7 @@ formElement.addEventListener('submit', event => {
 
     if (isInputsValid && checkEmailReturn && checkPassReturn && checkConfirmPassReturn) {
 
-        fetch(`http://localhost:5000/user/edit-user-data`, options)
+        fetch(`http://191.101.232.235/api/user/edit-user-data`, options)
             .then(res => {
                 console.log(res);
                 if (res.status == 200) {

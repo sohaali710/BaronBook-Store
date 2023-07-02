@@ -4,12 +4,12 @@ import { getCookie } from "./cookies.js"
 
 function getCategoriesAccordion(container) {
   let categoriesDiv = ''
-  fetch('http://localhost:5000/all-main-categs').then(res => res.json()).then(data => {
+  fetch('http://191.101.232.235/api/all-main-categs').then(res => res.json()).then(data => {
     data.data.forEach(categ => {
       const { _id: categId, name: categName } = categ
       let subcategLis = ''
 
-      fetch(`http://localhost:5000/get-subs-by-main/${categId}`).then(res => res.json()).then(data => {
+      fetch(`http://191.101.232.235/api/get-subs-by-main/${categId}`).then(res => res.json()).then(data => {
         const subcategArr = data.data
 
         if (subcategArr.length) {

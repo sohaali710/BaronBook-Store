@@ -24,7 +24,7 @@ if (getCookie(userToken)) {
         data = Object.fromEntries(formData)
 
         if (checkEmailReturn && checkPassReturn) {
-            fetch(`http://localhost:5000/user/login`, {
+            fetch(`http://191.101.232.235/api/user/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

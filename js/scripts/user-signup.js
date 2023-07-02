@@ -39,7 +39,7 @@ if (getCookie(userToken)) {
 
         if (isInputsValid && checkEmailReturn && checkPassReturn && checkConfirmPassReturn) {
 
-            fetch(`http://localhost:5000/user/signup`, {
+            fetch(`http://191.101.232.235/api/user/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

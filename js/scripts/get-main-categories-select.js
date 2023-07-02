@@ -5,11 +5,11 @@ function getMainCategories(categContainer, selectedCateg = '') {
     let options = ''
     let categoriesDiv = ''
 
-    fetch('http://localhost:5000/all-main-categs').then(res => res.json()).then(data => {
+    fetch('http://191.101.232.235/api/all-main-categs').then(res => res.json()).then(data => {
         data.data.forEach(categ => {
             const { _id: categId, name: categName } = categ
 
-            fetch(`http://localhost:5000/get-subs-by-main/${categId}`).then(res => res.json()).then(data => {
+            fetch(`http://191.101.232.235/api/get-subs-by-main/${categId}`).then(res => res.json()).then(data => {
                 console.log(data.data.length)
                 if (data.data.length) {
                     if (categName == selectedCateg) {
