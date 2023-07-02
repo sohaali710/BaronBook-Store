@@ -4,7 +4,7 @@ import { getCookie } from "../../js/scripts/cookies.js"
 function getMainCategories(categContainer) {
     let checkItems = ''
 
-    fetch('http://localhost:5000/all-main-categs').then(res => res.json()).then(data => {
+    fetch('http://191.101.232.235/api/all-main-categs').then(res => res.json()).then(data => {
         data.data.forEach((categ => {
             checkItems += `
                     <label>
