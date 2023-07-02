@@ -11,8 +11,8 @@ if (selectedBookId) {
     fetch(`http://191.101.232.235/api/get-book-by-id/${selectedBookId}`).then(res => res.json()).then(data => {
         let { _id, title, description, subcateg, authorname, releasedate, img, book } = data.data
         releasedate = releasedate.split("T")[0]
-        img = img.replace('public', 'http://localhost:5000')
-        book = book.replace('public', 'http://localhost:5000')
+        img = img.replace('public', 'http://191.101.232.235/api')
+        book = book.replace('public', 'http://191.101.232.235/api')
 
         bookContainer.innerHTML = `
     <div class="blog-detail">

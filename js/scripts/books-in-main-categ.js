@@ -10,7 +10,7 @@ if (mainCategId) {
 			console.log(data);
 			data.data.forEach(bookData => {
 				let { _id, title, subcateg, authorname, img, book } = bookData
-				img = img.replace('public', 'http://localhost:5000')
+				img = img.replace('public', 'http://191.101.232.235/api')
 
 				bookUI += `
         <div class="col-xl-3 col-lg-4 col-md-4 col-12">
