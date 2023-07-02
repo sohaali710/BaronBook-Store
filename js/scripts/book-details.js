@@ -8,7 +8,7 @@ let readBook = document.querySelector('.readBook')
 const selectedBookId = location.search.split("=")[1];
 
 if (selectedBookId) {
-    fetch(`http://localhost:5000/get-book-by-id/${selectedBookId}`).then(res => res.json()).then(data => {
+    fetch(`http://191.101.232.235/api/get-book-by-id/${selectedBookId}`).then(res => res.json()).then(data => {
         let { _id, title, description, subcateg, authorname, releasedate, img, book } = data.data
         releasedate = releasedate.split("T")[0]
         img = img.replace('public', 'http://localhost:5000')

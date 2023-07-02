@@ -28,7 +28,7 @@ if (getCookie(adminToken)) {
 
         // if (checkEmailReturn && checkPassReturn) {
         if (checkEmailReturn) {
-            fetch(`http://localhost:5000/admin/login`, {
+            fetch(`http://191.101.232.235/api/admin/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
